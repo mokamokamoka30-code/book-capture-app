@@ -1,0 +1,9 @@
+{
+  "name": "冊子撮影アプリ",
+  "short_name": "冊子撮影",
+  "lang": "ja",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#155eef"
+}

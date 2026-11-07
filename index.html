@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#155eef"><meta name="description" content="冊子撮影・OneDrive保存アプリの試作版">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+  <title>冊子撮影アプリ</title>
+</head>
+<body>
+  <main class="wrap">
+    <header><h1>冊子撮影アプリ</h1><p>冊子ごとに写真を撮影し、OneDriveへ保存します。</p></header>
+    <section class="panel">
+      <label for="bookId">冊子番号</label>
+      <input id="bookId" type="text" placeholder="例：1737" autocomplete="off">
+      <label for="photos">撮影した写真を選択（複数可）</label>
+      <input id="photos" type="file" accept="image/*" capture="environment" multiple>
+      <p class="hint">iPhoneでは「写真を撮る」または写真ライブラリから選択できます。</p>
+      <div id="preview" class="preview" aria-live="polite"></div>
+      <div class="actions"><button id="login" class="secondary">Microsoftにログイン</button><button id="upload">OneDriveへ保存</button></div>
+      <p id="status" role="status" aria-live="polite">未ログインです。</p>
+    </section>
+    <section class="notice"><h2>試作版について</h2><p>現在は写真の選択とOneDriveへの保存を確認するための試作版です。文字読み取り（OCR）、赤線判定、番号の並べ替え、Excel自動作成はまだ実装されていません。</p></section>
+    <footer>業務利用前に、保存先アカウントと写真データの管理ルールを確認してください。</footer>
+  </main>
+  <script src="https://alcdn.msauth.net/browser/3.28.1/js/msal-browser.min.js"></script>
+  <script src="app.js"></script>
+</body></html>
