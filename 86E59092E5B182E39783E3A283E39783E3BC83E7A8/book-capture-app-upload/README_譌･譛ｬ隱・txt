@@ -1,0 +1,27 @@
+冊子撮影アプリ 試作版
+
+【このファイルについて】
+GitHub Pagesに公開するためのWebアプリ試作版です。
+
+【現在できること】
+・冊子番号の入力
+・iPhoneから写真を複数選択
+・Microsoft個人アカウントでのサインイン設定
+・OneDriveの「冊子電子化／冊子番号」フォルダへの写真保存
+
+【まだできないこと】
+・手書き番号のOCR
+・赤線／抹消の自動判定
+・番号の元番／枝号への分割
+・数値順ソート、通し番号付与
+・既存.xlsmテンプレートへの転記、マクロ実行
+これらは未実装です。現時点で実業務の完成版として使用しないでください。
+
+【公開前に必要な設定】
+1. GitHubリポジトリのSettings > Pagesで、Deploy from a branch / main / root を選択して保存。
+2. 公開URLが発行されたら、Microsoft Entraのアプリ登録 > 認証 > プラットフォームの追加 > シングルページアプリケーション(SPA)に、そのURLを登録。
+3. Entraアプリ登録のAPI permissionsでMicrosoft GraphのDelegated permissionsとしてUser.ReadとFiles.ReadWriteを追加し、同意する。
+4. 公開URLをiPhoneで開き、Microsoftサインインとテスト写真1枚のアップロードを確認する。
+
+注意：このリポジトリはPublicです。顧客の写真、Excel、個人情報、パスワード、クライアントシークレットを絶対にアップロードしないでください。
+Microsoft Client IDは公開クライアント識別子であり、パスワードではありません。
