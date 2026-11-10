@@ -41,26 +41,35 @@ function initAuth() {
 }
 
 async function login() {
-  if (!msalApp) return status('認証の準備ができていません。ページを再読み込みしてください。');
+  if (!msalApp) {
+    return status('認証の準備ができていません。ページを再読み込みしてください。');
+  }
   try {
-    const result = await msalApp.loginPopup({ scopes: SCOPES });
-    account = result.account;
-    status(`ログイン済み：${account.username}`);
+    await msalApp.loginRedirect({ scopes: SCOPES });
   } catch (e) {
     status('ログインできませんでした：' + e.message);
   }
 }
 
+
 async function getToken() {
-  if (!account) throw new Error('先にMicrosoftにログインしてください。');
+  if (!account) {
+    throw new Error('先にMicrosoftにログインしてください。');
+  }
   try {
-    const result = await msalApp.acquireTokenSilent({ scopes: SCOPES, account });
+    const result = await msalApp.acquireTokenSilent({
+      scopes: SCOPES,
+      account: account
+    });
     return result.accessToken;
-  } catch {
-    const result = await msalApp.acquireTokenPopup({ scopes: SCOPES, account });
-    return result.accessToken;
+  } catch (e) {
+    await msalApp.acquireTokenRedirect({
+      scopes: SCOPES,
+      account: account
+    });
   }
 }
+
 
 async function graph(path, token, options = {}) {
   const response = await fetch('https://graph.microsoft.com/v1.0' + path, {
